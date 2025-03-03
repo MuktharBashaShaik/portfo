@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Portfolio Website Design</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: #000000; /* Changed to solid black */
+            color: white;
+            text-align: center;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(255, 255, 255, 0.1); /* Lightened header background for contrast */
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        .logo i {
+            margin-right: 10px;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: 0.3s;
+        }
+        nav ul li a:hover {
+            color: #ff9800;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px;
+            gap: 50px;
+        }
+        .hero-pic img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+        .hero-text {
+            text-align: left;
+        }
+        .btn-group {
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            color: white;
+            background: #ff9800;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        .btn:hover {
+            background: #e65100;
+        }
+        .social {
+            margin-top: 20px;
+        }
+        .social a {
+            color: white;
+            font-size: 1.5em;
+            margin: 0 10px;
+            transition: 0.3s;
+        }
+        .social a:hover {
+            color: #ff9800;
+        }
+
+        /* Portfolio Section Styles */
+        #portfolio {
+            padding: 80px 50px;
+            background: #000000; /* Changed to black */
+        }
+        .portfolio-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .portfolio-container h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: #ff9800;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .project-card {
+            background: rgba(255, 255, 255, 0.1); /* Slightly lighter for contrast */
+            border-radius: 10px;
+            padding: 20px;
+            transition: 0.3s;
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+        }
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .project-card h3 {
+            margin: 15px 0;
+            font-size: 1.5em;
+        }
+        .project-card p {
+            font-size: 1em;
+            margin-bottom: 15px;
+        }
+        .project-link {
+            color: #ff9800;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Resume Section Styles */
+        #resume {
+            padding: 80px 50px;
+            background: #000000; /* Changed to black */
+        }
+        .resume-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .resume-container h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: #ff9800;
+        }
+        .resume-section {
+            margin-bottom: 40px;
+        }
+        .resume-section h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        .resume-item {
+            margin-bottom: 20px;
+        }
+        .resume-item h4 {
+            font-size: 1.2em;
+            color: #ff9800;
+        }
+        .resume-item p {
+            font-size: 1em;
+        }
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .skill-item {
+            background: #ff9800;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        /* Contact Section Styles */
+        #contact {
+            padding: 80px 50px;
+            background: #000000; /* Changed to black */
+        }
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .contact-container h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: #ff9800;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+        .form-group label {
+            margin-bottom: 5px;
+            font-size: 1.1em;
+            color: white;
+        }
+        .form-group input,
+        .form-group textarea {
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.9);
+            font-size: 1em;
+            color: #333;
+        }
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        .submit-btn {
+            padding: 12px 30px;
+            font-size: 1.2em;
+            color: white;
+            background: #ff9800;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 200px;
+            margin: 0 auto;
+        }
+        .submit-btn:hover {
+            background: #e65100;
+        }
+
+        /* Hamburger Menu Styles */
+        .hamburger {
+            display: none; /* Hidden by default on larger screens */
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background: white;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex; /* Show hamburger on smaller screens */
+            }
+
+            nav {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.1);
+                transform: translateX(-100%);
+                transition: transform 0.3s ease-in-out;
+            }
+
+            nav.active {
+                transform: translateX(0);
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-header">
+        <div class="wrapper">
+            <header>
+                <div class="logo">
+                    <i class="fa-solid fa-m"></i>
+                    <div class="logo-text">Mukthar Shaik</div>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <nav>
+                    <ul class="navlinks">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#resume">Resume</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <div class="container">
+                <div class="hero-pic">
+                    <img src="Me1.jpg" alt="profile pic">
+                </div>
+                <div class="hero-text">
+                    <h5>Hi I'm <span class="input">Frontend Developer</span></h5>
+                    <h1>Mukthar Basha Shaik</h1>
+                    <p>I'm a dedicated Software Engineer with expertise in languages like C, Java, and Python, skilled in building efficient, user-centered solutions. My experience spans competitive coding on platforms like HackerRank and CodeChef honing my problem-solving abilities.</p>
+                    <div class="btn-group">
+                       <a href="#" class="btn active">Download CV</a>
+                       <a href="#contact" class="btn">Contact</a>
+                    </div>
+                    <div class="social">
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-dribbble"></i></a>
+                        <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <div class="portfolio-container">
+            <h2>My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="project1.jpg" alt="Project 1">
+                    <h3>Whether site</h3>
+                    <p>A web application that provides real-time weather updates, forecasts, and climate insights based on user location.</p>
+                </div>
+                <div class="project-card">
+                    <img src="project2.jpg" alt="Project 2">
+                    <h3>ImgtoTxt</h3>
+                    <p>A web-based tool that extracts text from images using advanced OCR technology.</p>
+                </div>
+                <div class="project-card">
+                    <img src="project3.jpg" alt="Project 3">
+                    <h3>Car Rental System</h3>
+                    <p>An online platform for browsing, booking, and managing car rentals with secure payments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume">
+        <div class="resume-container">
+            <h2>Resume</h2>
+            <div class="resume-section">
+                <h3>Education</h3>
+                <div class="resume-item">
+                    <h4>Bachelor in Computer Science</h4>
+                    <p>KL University - 2023-2027</p>
+                    <p>Graduating with Computer science-Honors, focusing on software development and algorithms.</p>
+                </div>
+            </div>
+            <div class="resume-section">
+                <h3>Experience</h3>
+                <div class="resume-item">
+                    <h4>Technical stuff</h4>
+                    <p>Tech Experience on Web Development</p>
+                    <p>Developed responsive web interfaces using React and collaborated on similar Projects.</p>
+                </div>
+                <div class="resume-item">
+                    <h4>Building Websites</h4>
+                    <p>Using React JS</p>
+                    <p>Created multiple client websites, including HTML & CSS.</p>
+                </div>
+            </div>
+            <div class="resume-section">
+                <h3>Skills</h3>
+                <div class="skills-list">
+                    <span class="skill-item">HTML</span>
+                    <span class="skill-item">CSS</span>
+                    <span class="skill-item">JavaScript</span>
+                    <span class="skill-item">React</span>
+                    <span class="skill-item">Python</span>
+                    <span class="skill-item">Java</span>
+                    <span class="skill-item">C</span>
+                    <span class="skill-item">Competitive Coding</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="contact-container">
+            <h2>Contact Me</h2>
+            <form class="contact-form" action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.10/typed.min.js"></script>
+    <script>
+        var typed = new Typed(".input", {
+            strings: ["Frontend Developer", "UX Designer", "Web Developer"],
+            typeSpeed: 70,
+            backSpeed: 55,
+            loop: true
+        });
+
+        // Hamburger Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const nav = document.querySelector('nav');
+
+        hamburger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
